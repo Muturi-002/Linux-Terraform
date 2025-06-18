@@ -16,15 +16,47 @@ For the cloud accounts, either one or both will work just fine.
 git clone github.com/Muturi-002/Linux-Terraform.git
 cd Linux-Terraform
 ```
-2. Change the file permissions on the script file (ends with '.sh')
+### To deploy on OCI only, do the following.
+2. Navigate to the OCI directory.
 ```bash
-sudo chmod 700 infra.sh
+cd OCI
 ```
-3. Run the file.
-```bash
-# if the script file is executable
-./infra.sh
-# If the script file is non-executable
-bash infra.sh
+3. Replace the values in the file `terraform.tfvars` with your respective values.
+```hcl
+tenancy_ocid      = "<your_tenancy_id>"
+user_ocid         = "<your_user_id>"
+fingerprint       = "<your_api_fingerprint>"
+private_key_path  = "<path_to_your_private_key>"
+region            = "<your_region>"
+compartment_id    = "<your_compartment_id>"
+ssh_key           = "<your_ssh_public_key>" # contents of your public SSH key
+instance_shape    = "<instance_shape_of_your_choice>"
 ```
+> **Note:** To ease your configuration, you can store your OCI credentials in a file named `oci-config-values`.
 
+4. Change file permissions on `oci-setup.sh` and run.
+```bash
+chmod +x oci-setup.sh
+./oci-setup.sh
+```
+### To deploy on AWS, do the following
+5. Navigate to the AWS directory.
+```bash
+cd AWS
+```
+6. Replace the values in the `terraform.tfvars` with your respective values.
+```hcl
+
+```
+7. Change file permissions on `aws-setup.sh` and run.
+```bash
+chmod +x aws-setup.sh
+./aws-setup.sh
+```
+### To deploy on both cloud platforms, do the following.
+8. Follow steps 3 and 6.
+9. Change file permissions on `infra.sh` and run
+```bash 
+chmod +x infra.sh
+./infra.sh
+```
