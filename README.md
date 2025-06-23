@@ -10,6 +10,14 @@ Terraform modules will not be currently be used for infrastructure provision.
 
 For the cloud accounts, either one or both will work just fine.
 
+## System Design Architecture
+
+### OCI Architecture
+
+![OCI Architecture](<OCI Design Architecture.png>)
+
+### AWS Architecture
+
 ## Steps
 1. Clone the repo and navigate to the Linux-Terraform directory.
 ```bash
@@ -29,7 +37,7 @@ fingerprint       = "<your_api_fingerprint>"
 private_key_path  = "<path_to_your_private_key>"
 region            = "<your_region>"
 compartment_id    = "<your_compartment_id>"
-ssh_key           = "<your_ssh_public_key>" # contents of your public SSH key
+ssh_key           = "<your_ssh_public_key>" # contents of your public SSH key for use.
 instance_shape    = "<instance_shape_of_your_choice>"
 ```
 > **Note:** To ease your configuration, you can store your OCI credentials in a file named `oci-config-values`.
