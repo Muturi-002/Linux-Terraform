@@ -7,6 +7,7 @@ Terraform modules will not be currently be used for infrastructure provision.
 1. Ubuntu version 24.04 or later.
 2. An AWS account
 3. An OCI account
+4. OCI CLI and/or AWS CLI installed
 
 For the cloud accounts, either one or both will work just fine.
 

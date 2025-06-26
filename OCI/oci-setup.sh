@@ -14,7 +14,7 @@ if oci --version  &> /dev/null; then
     echo "OCI CLI is already installed."
 else
     echo "OCI CLI is not installed.\n Installing OCI CLI now..."
-    sudo apt-get install oci-cli -y
+    sudo bash -c "$(curl -L https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh)" -y #Installs OCI CLI
     echo "OCI CLI installed successfully."
 fi
 
@@ -23,7 +23,7 @@ if terraform --version &> /dev/null; then
     echo "Terraform is already installed."
 else
     echo "Terraform is not installed.\n Installing Terraform now..."
-    sudo apt-get install terraform -y
+    sudo snap install terraform --classic #Installs Terraform v1.12.2
     echo "Terraform installed successfully."
 fi
 
