@@ -4,3 +4,6 @@
 *.tfstate*
 # Ignore Terraform plan files
 *.tfplan*
+
+# Ignore Terraform variable files
+*.tfvars
