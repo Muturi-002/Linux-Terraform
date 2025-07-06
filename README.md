@@ -1,23 +1,16 @@
 # Linux-Terraform
-This is a simple project designed to create and automate provisioning of infrastructure through execution of a script. The target cloud platforms in this project will be Amazon Web Services (AWS) and Oracle Cloud Infrastructure (OCI). This script will check whether Terraform, AWS CLI and OCI CLI are installed either on the local machine (running on a Debian-based OS) or on a remote server, running on a Debian-based OS.
+This is a simple project designed to automate creation and provisioning of infrastructure through execution of a script. The target cloud platform in this project will be Oracle Cloud Infrastructure (OCI). This script will check whether Terraform and OCI CLI are installed either on the local machine or on a remote server, both running on a Debian-based OS.
 
 Terraform modules will not be currently be used for infrastructure provision.
 
 ## Prerequisites
 1. Ubuntu version 24.04 or later.
-2. An AWS account
-3. An OCI account
-4. OCI CLI and/or AWS CLI installed
-
-For the cloud accounts, either one or both will work just fine.
-
-## System Design Architecture
+2. An OCI account
+3. OCI CLI installed (preferred)
 
 ### OCI Architecture
 
 ![OCI Architecture](<OCI Design Architecture.png>)
-
-### AWS Architecture
 
 ## Steps
 1. Clone the repo and navigate to the Linux-Terraform directory.
@@ -30,7 +23,7 @@ cd Linux-Terraform
 ```bash
 cd OCI
 ```
-3. Replace the values in the file `terraform.tfvars` with your respective values.
+3. Create file `terraform.tfvars` and fill the following variables with your respective values.
 ```hcl
 tenancy_ocid      = "<your_tenancy_id>"
 user_ocid         = "<your_user_id>"
@@ -41,31 +34,9 @@ compartment_id    = "<your_compartment_id>"
 ssh_key           = "<your_ssh_public_key>" # contents of your public SSH key for use.
 instance_shape    = "<instance_shape_of_your_choice>"
 ```
-> **Note:** To ease your configuration, you can store your OCI credentials in a file named `oci-config-values`.
 
 4. Change file permissions on `oci-setup.sh` and run.
 ```bash
 chmod +x oci-setup.sh
 ./oci-setup.sh
-```
-### To deploy on AWS, do the following
-5. Navigate to the AWS directory.
-```bash
-cd AWS
-```
-6. Replace the values in the `terraform.tfvars` with your respective values.
-```hcl
-
-```
-7. Change file permissions on `aws-setup.sh` and run.
-```bash
-chmod +x aws-setup.sh
-./aws-setup.sh
-```
-### To deploy on both cloud platforms, do the following.
-8. Follow steps 3 and 6.
-9. Change file permissions on `infra.sh` and run
-```bash 
-chmod +x infra.sh
-./infra.sh
 ```
