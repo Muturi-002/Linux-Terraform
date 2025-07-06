@@ -1,13 +1,8 @@
 resource "oci_core_vcn" "LT-nw" {
   compartment_id = var.compartment_id
-  cidr_block     = var.network_cidr_block[0]
+  cidr_blocks    = var.network_cidr_block
   dns_label      = var.vcn_dns_label
   display_name   = var.vcn_dns_label
-
-  defined_tags = {
-    key       = var.tags_key
-    "Purpose" = "Create VCN used by ${var.instance_name}"
-  }
 }
 
 resource "oci_core_internet_gateway" "LT-igw" {
@@ -113,10 +108,5 @@ resource "oci_core_service_gateway" "LT-sgw" {
 
   services {
     service_id = lookup(data.oci_core_services.LT-services.services[0], "id")
-  }
-
-  defined_tags = {
-    key       = var.tags_key
-    "Purpose" = "Create Service Gateway used by ${oci_objectstorage_bucket.LT-Bucket.name}"
   }
 }

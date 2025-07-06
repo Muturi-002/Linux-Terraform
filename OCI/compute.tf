@@ -12,14 +12,11 @@ resource "oci_core_instance" "LT1" {
   #Optional parameters
   source_details {
     source_type = "image"
-    source_id   = data.oci_core_images.instance_image.id
+    source_id   = data.oci_core_images.instance_image.images[0].id
   }
   metadata = {
     ssh_authorized_keys = var.ssh_key
   }
-  defined_tags = {
-    key       = var.tags_key
-    "Purpose" = "Create instance in OCI"
-  }
+  freeform_tags = { "${var.tags_key}" = "Create Instance in OCI" }
 
 }
